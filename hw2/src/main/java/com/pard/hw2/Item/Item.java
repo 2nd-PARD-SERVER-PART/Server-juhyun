@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Item {
     private String pName;
-    private String price;
-    private int number;
+    private int price;
+    private int pNumber;
 }
