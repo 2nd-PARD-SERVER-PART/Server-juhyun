@@ -31,8 +31,8 @@ public class ItemController {
     public Item findOne(@PathVariable Integer id){
         return itemRepository.findById(id);
     }
-    @PutMapping("/update/{id}")
-    public void update(@PathVariable Integer id, @RequestBody Item upitem){
+    @PatchMapping ("/update/{id}")
+    public void updateItem(@PathVariable Integer id, @RequestBody Item upitem){
         itemRepository.update(id,upitem);
     }
 //delete 성공
