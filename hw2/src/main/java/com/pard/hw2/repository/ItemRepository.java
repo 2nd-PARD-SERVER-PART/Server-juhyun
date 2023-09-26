@@ -15,7 +15,7 @@ public class ItemRepository {
     //put, update, findById, findAll, delete
     public Item save(Item item){
 //        id 1추가 하고 put할 때 추가한 값으로 저장
-        item.setId(item.getId()+1);
+        item.setId(items.size()+1);
         items.put(item.getId(), item);
         return item;
     }
@@ -27,11 +27,11 @@ public class ItemRepository {
         return new ArrayList<>(items.values());
     }
 
-    public void update(Integer id, String pName, Integer price, Integer pNumber){
+    public void update(Integer id, Item updateItem){
         Item wantToUpdate = findById(id);
-        wantToUpdate.setPrice(price);
-        wantToUpdate.setPName(pName);
-        wantToUpdate.setPNumber(pNumber);
+        wantToUpdate.setPNumber(updateItem.getPNumber());
+        wantToUpdate.setPrice(updateItem.getPrice());
+        wantToUpdate.setPName(wantToUpdate.getPName());
     }
 
     public void delete(Integer id){

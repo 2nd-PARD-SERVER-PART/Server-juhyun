@@ -3,10 +3,8 @@ package com.pard.hw2.controller;
 import com.pard.hw2.Item.Item;
 import com.pard.hw2.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 
@@ -20,14 +18,26 @@ public class ItemController {
     }
     @PostMapping("/add")
     public String add(@RequestBody Item item){
-        item.setId(item.getId());
         itemRepository.save(item);
-        return "add 완료";
+        return "add 완료" + item.getId();
     }
 
     @GetMapping("/findAll")
     public List<Item> findAll(){
-        List<Item> itemList = itemRepository.findAll();
-        return itemList;
+        return itemRepository.findAll();
+    }
+
+    @GetMapping("/findOne/{id}")
+    public Item findOne(@PathVariable Integer id){
+        return itemRepository.findById(id);
+    }
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable Integer id, @RequestBody Item upitem){
+        itemRepository.update(id,upitem);
+    }
+//delete 성공
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id){
+        itemRepository.delete(id);
     }
 }
