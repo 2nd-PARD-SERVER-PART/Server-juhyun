@@ -14,7 +14,9 @@ public class ItemRepository {
 
     //put, update, findById, findAll, delete
     public Item save(Item item){
-        items.put(item.getId(),item);
+//        id 1추가 하고 put할 때 추가한 값으로 저장
+        item.setId(item.getId()+1);
+        items.put(item.getId(), item);
         return item;
     }
 

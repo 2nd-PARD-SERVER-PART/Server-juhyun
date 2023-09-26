@@ -20,7 +20,7 @@ public class ItemController {
     }
     @PostMapping("/add")
     public String add(@RequestBody Item item){
-        item.setId(item.getId()+1);
+        item.setId(item.getId());
         itemRepository.save(item);
         return "add 완료";
     }
