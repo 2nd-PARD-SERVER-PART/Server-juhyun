@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Item {
+    private int id;
     private String pName;
     private int price;
     private int pNumber;

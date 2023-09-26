@@ -14,18 +14,23 @@ public class ItemRepository {
 
     //put, update, findById, findAll, delete
     public Item save(Item item){
-        items.put(item.getPNumber(),item);
+        items.put(item.getId(),item);
         return item;
     }
 
-    public Item findById(Integer pNumber){
-        return items.get(pNumber);
+    public Item findById(Integer id){
+        return items.get(id);
     }
     public List<Item> findAll(){
         return new ArrayList<>(items.values());
     }
 
-
+    public void update(Integer id, String pName, Integer price, Integer pNumber){
+        Item wantToUpdate = findById(id);
+        wantToUpdate.setPrice(price);
+        wantToUpdate.setPName(pName);
+        wantToUpdate.setPNumber(pNumber);
+    }
 
     public void delete(Integer id){
         items.remove(id);
