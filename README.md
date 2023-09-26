@@ -11,7 +11,7 @@
 
 - update & delete
 <img width="500" height="500" alt="image" src="https://github.com/2nd-PARD-SERVER-PART/Server-juhyun/assets/109461985/b2d859ee-9cfe-4fd9-a468-cbb433bb3942">
-<img width="500" height="500" alt="image" src="https://github.com/2nd-PARD-SERVER-PART/Server-juhyun/assets/109461985/1d60ef4f-0ac2-498f-88b4-815d6e44488d">
+<img width="500" height="500" alt="image" src="https://github.com/2nd-PARD-SERVER-PART/Server-juhyun/assets/109461985/fbdf3434-e2a8-46fc-b16a-6edddc1ea2c8">
 
 
 
