@@ -1,18 +1,18 @@
-package three.seminar.basic.deeping.controller;
+package three.seminar.deeping.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import three.seminar.basic.deeping.repository.UserRepository;
-import three.seminar.basic.deeping.user.User;
-import java.util.ArrayList;
+import three.seminar.deeping.repository.UserRepository;
+import three.seminar.deeping.user.User;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class Controller {
     private final UserRepository userRepository;
-    //위에 선언한거 스프링이 읽을 수 있게 불러오는것
     @Autowired
+    //위에 선언한거 스프링이 읽을 수 있게 불러오는것
     public Controller(UserRepository userRepository){
         this.userRepository = userRepository;
     }
