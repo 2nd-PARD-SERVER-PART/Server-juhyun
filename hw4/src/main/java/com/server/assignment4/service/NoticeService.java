@@ -8,8 +8,8 @@ import com.server.assignment4.repository.LeaderRepository;
 import com.server.assignment4.repository.NoticeRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +45,10 @@ public class NoticeService {
                 .build();
     }
 
-    public List<NoticeResponse> findAll(){
+    public List<NoticeResponse> findAll(Long leaderId){
+        PartLeader partLeader = leaderRepository.findById(leaderId)
+                .orElseThrow(()-> new IllegalArgumentException("존재하지 않는 리더입니다"));
+
         List<NoticeResponse> notices = getNoticeRepository().findAll()
                 .stream().map(notice -> NoticeResponse.builder()
                         .title(notice.getTitle())
@@ -55,19 +58,22 @@ public class NoticeService {
         return notices;
     }
 
+    @Transactional
     public Notice updateNotice(Long noticeId, NoticeRequest noticeRequest){
-        Optional<Notice> notice = noticeRepository.findById(noticeId);
+        Notice notice = noticeRepository.findById(noticeId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 공지입니다"));
 
-        notice.get().setTitle(noticeRequest.getTitle());
-        notice.get().setContents(noticeRequest.getContent());
+        notice.setTitle(noticeRequest.getTitle());
+        notice.setContents(noticeRequest.getContent());
 
-        Notice updateNotice = notice.get();
-
-        return updateNotice;
+        return notice;
     }
 
-    public ResponseEntity<?> deleteNotice(Long noticeId){
+    @Transactional
+    public void deleteNotice(Long noticeId){
+        Notice notice = noticeRepository.findById(noticeId)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 공지입니다"));
+
         noticeRepository.deleteNoticeById(noticeId);
-        return null;
     }
 }
